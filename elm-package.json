@@ -1,0 +1,16 @@
+{
+    "version": "1.0.0",
+    "summary": "Evaluating mustache templates",
+    "repository": "https://github.com/truqu/elm-mustache.git",
+    "license": "MIT",
+    "source-directories": [
+        "src"
+    ],
+    "exposed-modules": [
+        "Mustache"
+    ],
+    "dependencies": {
+        "elm-lang/core": "3.0.0 <= v < 4.0.0"
+    },
+    "elm-version": "0.16.0 <= v < 0.17.0"
+}
