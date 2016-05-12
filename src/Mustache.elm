@@ -33,7 +33,7 @@ renderSections : List Node -> String -> String
 renderSections nodes template =
   let
     r =
-      regex "{{# (.+?) }}(.+?){{/ \\1 }}"
+      regex "{{#\\s?(.+?)\\s?}}(.+?){{/\\s?\\1\\s?}}"
   in
     replace All r (getSection nodes) template
 
@@ -42,7 +42,7 @@ renderVariables : List Node -> String -> String
 renderVariables nodes template =
   let
     r =
-      regex "{{ (.+?) }}"
+      regex "{{\\s?(.+?)\\s?}}"
   in
     replace All r (getVariable nodes) template
 

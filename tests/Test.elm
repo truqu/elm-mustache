@@ -27,9 +27,19 @@ render =
             (Mustache.render [ Mustache.Variable "name" "John" ] "My name is {{ name }}.")
             "My name is John."
     , test
+        "Variable without spaces"
+        <| assertEqual
+            (Mustache.render [ Mustache.Variable "name" "John" ] "My name is {{name}}.")
+            "My name is John."
+    , test
         "Section"
         <| assertEqual
             (Mustache.render [ Mustache.Section "show" True ] "Hello{{# show }}, world.{{/ show }}")
+            "Hello, world."
+    , test
+        "Section without spaces"
+        <| assertEqual
+            (Mustache.render [ Mustache.Section "show" True ] "Hello{{#show}}, world.{{/show}}")
             "Hello, world."
     , test
         "Hide section"
