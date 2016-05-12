@@ -1,8 +1,16 @@
 module Mustache (Node(..), render) where
 
+{-| Rendering mustache templates
+
+@docs Node, render
+
+-}
+
 import Regex exposing (..)
 
 
+{-| Represent mustache variables
+-}
 type Node
   = Variable String String
   | Section String Bool
@@ -13,6 +21,8 @@ type Hole
   | Section' String String
 
 
+{-| Render a template using a list of variables
+-}
 render : List Node -> String -> String
 render nodes template =
   renderSections nodes template
