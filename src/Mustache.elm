@@ -1,4 +1,4 @@
-module Mustache (Node(..), render) where
+module Mustache exposing (Node(..), render)
 
 {-| Rendering mustache templates
 
