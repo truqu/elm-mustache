@@ -17,8 +17,8 @@ type Node
 
 
 type Hole
-  = Variable' String
-  | Section' String String
+  = Variable_ String
+  | Section_ String String
 
 
 {-| Render a template using a list of variables
@@ -51,39 +51,50 @@ getVariable : List Node -> Match -> String
 getVariable nodes match =
   let
     key =
-      head' match.submatches
+      head_ match.submatches
 
     getContent node =
       case node of
-        Variable key' val ->
-          if key == key' then
+        Variable key_ val ->
+          if key == key_ then
             Just val
           else
             Nothing
 
         _ ->
           Nothing
+
+    getFirstContent nodes =
+      case nodes of 
+        [] ->
+          ""
+
+        node :: rest ->
+          case getContent node of 
+            Nothing ->
+              getFirstContent rest
+
+            Just content ->
+              content
   in
-    List.map getContent nodes
-      |> Maybe.oneOf
-      |> Maybe.withDefault ""
+    getFirstContent nodes
 
 
 getSection : List Node -> Match -> String
 getSection nodes match =
   let
     key =
-      head' match.submatches
+      head_ match.submatches
 
     val =
       List.tail match.submatches
         |> Maybe.withDefault []
-        |> head'
+        |> head_
 
     expand node =
       case node of
-        Section key' bool ->
-          if key' == key then
+        Section key_ bool ->
+          if key_ == key then
             bool
           else
             False
@@ -97,8 +108,8 @@ getSection nodes match =
       ""
 
 
-head' : List (Maybe String) -> String
-head' xs =
+head_ : List (Maybe String) -> String
+head_ xs =
   List.head xs
     |> Maybe.withDefault Nothing
     |> Maybe.withDefault ""
