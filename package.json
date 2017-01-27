@@ -1,6 +1,6 @@
 {
   "name": "elm-mustache",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Evaluating mustache templates",
   "dependencies": {
     "elm-test": "^0.18.2"

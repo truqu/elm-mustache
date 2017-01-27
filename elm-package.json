@@ -1,5 +1,5 @@
 {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "summary": "Evaluating mustache templates",
     "repository": "https://github.com/truqu/elm-mustache.git",
     "license": "MIT",
