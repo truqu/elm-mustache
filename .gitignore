@@ -2,3 +2,4 @@ tests/test.js
 tests/raw-test.js
 tests/elm-stuff/*
 elm-stuff/*
+node_modules/*
