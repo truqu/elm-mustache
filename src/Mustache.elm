@@ -21,12 +21,20 @@ type Hole
     | Section_ String String
 
 
+{-| Collapse all whitespace like in HTML rendering
+-}
+collapseWhitespace : String -> String
+collapseWhitespace =
+    replace All (regex "\\s+") (\{ match } -> " ")
+
+
 {-| Render a template using a list of variables
 -}
 render : List Node -> String -> String
 render nodes template =
-    renderSections nodes template
+    renderSections nodes (collapseWhitespace template)
         |> renderVariables nodes
+        >> String.trim
 
 
 renderSections : List Node -> String -> String

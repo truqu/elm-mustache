@@ -51,4 +51,18 @@ render =
                 Expect.equal
                     (Mustache.render [ Mustache.Section "show" False ] "Hello{{# show }}, world.{{/ show }}")
                     "Hello"
+        , test
+            "Hide multiline section"
+          <|
+            \_ ->
+                Expect.equal
+                    (Mustache.render [ Mustache.Section "show" False ]
+                        """
+                         Hello,
+                          {{# show }}
+                         World
+                          {{/ show }}
+                         """
+                    )
+                    "Hello,"
         ]
