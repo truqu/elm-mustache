@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Evaluating mustache templates",
   "dependencies": {
-    "elm-test": "^0.18.2"
+    "elm-test": "0.18.2"
   },
   "devDependencies": {},
   "license": "MIT",
